@@ -1,0 +1,9 @@
+.filterButtonsWrapper{
+    display: flex;
+    justify-content: center;
+    font-family: Helvetica,Arial,sans-serif;
+}
+.filterButton{
+    padding: 5px 25px;
+    margin: 10px;
+}

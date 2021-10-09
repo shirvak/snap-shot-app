@@ -1,16 +1,27 @@
 import { useHistory } from "react-router-dom";
-const PhotoFilter = ({ onSearch }) => {
+import classes from "./PhotoFilter.module.css";
+
+const PhotoFilter = () => {
   const history = useHistory();
-  const filterButtonName = ["Mountain", "Beaches", "Birds", "Foods"];
-  const handleFilterClick = (name) => {
-    history.push(`/photoTitle/${name}`);
-    onSearch(name);
+  const filterButtonName = [
+    { routeName: "mountain", displayName: "Mountain" },
+    { routeName: "food", displayName: "Foods" },
+    { routeName: "beach", displayName: "Beaches" },
+    { routeName: "bird", displayName: "Birds" },
+  ];
+  const handleFilterClick = (filter) => {
+    history.push(`/${filter.routeName}`);
   };
   return (
-    <div>
-      {filterButtonName.map((name, key) => (
-        <button type="submit" key={key} onClick={() => handleFilterClick(name)}>
-          {name}
+    <div className={classes.filterButtonsWrapper}>
+      {filterButtonName.map((filter, key) => (
+        <button
+          className={classes.filterButton}
+          type="submit"
+          key={key}
+          onClick={() => handleFilterClick(filter)}
+        >
+          {filter.displayName}
         </button>
       ))}
     </div>
