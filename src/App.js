@@ -8,29 +8,27 @@ import classes from "./App.module.css";
 function App() {
   return (
     <PhotoContextProvider>
-      <HashRouter basename="/SnapScout">
-        <div className={classes.container}>
-          <h1 className={classes.header}>SnapShot</h1>
-          <PhotoSearch />
-          <PhotoFilter />
-        </div>
-        <Switch>
-          <Route exact path="/" render={() => <Redirect to="/mountain" />} />
-          <Route
-            path="/mountain"
-            render={() => <PhotoList userInput="mountain" />}
-          />
-          <Route path="/beach" render={() => <PhotoList userInput="beach" />} />
-          <Route path="/bird" render={() => <PhotoList userInput="bird" />} />
-          <Route path="/food" render={() => <PhotoList userInput="food" />} />
-          <Route
-            path="/search/:searchInput"
-            render={(props) => (
-              <PhotoList userInput={props.match.params.searchInput} />
-            )}
-          />
-        </Switch>
-      </HashRouter>
+      <div className={classes.container}>
+        <h1 className={classes.header}>SnapShot</h1>
+        <PhotoSearch />
+        <PhotoFilter />
+      </div>
+      <Switch>
+        <Route exact path="/" render={() => <Redirect to="/mountain" />} />
+        <Route
+          path="/mountain"
+          render={() => <PhotoList userInput="mountain" />}
+        />
+        <Route path="/beach" render={() => <PhotoList userInput="beach" />} />
+        <Route path="/bird" render={() => <PhotoList userInput="bird" />} />
+        <Route path="/food" render={() => <PhotoList userInput="food" />} />
+        <Route
+          path="/search/:searchInput"
+          render={(props) => (
+            <PhotoList userInput={props.match.params.searchInput} />
+          )}
+        />
+      </Switch>
     </PhotoContextProvider>
   );
 }
