@@ -1,12 +1,12 @@
-import { useState, useContext } from "react";
-import { PhotoContext } from "../context/PhotoContext";
+import { useState } from "react";
 import classes from "./PhotoSearch.module.css";
 import SearchIcon from "../UI/SearchIcon";
+import { useHistory } from "react-router-dom";
 
 const PhotoSearch = ({ onSearch }) => {
-  const [userInput, setUserInput] = useState("");
+  const history = useHistory();
+  const [searchTerm, setSearchTerm] = useState("");
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
-  const { fetchPhoto } = useContext(PhotoContext);
 
   const onInputChange = (event) => {
     const inputValue = event.target.value;
@@ -16,11 +16,11 @@ const PhotoSearch = ({ onSearch }) => {
     } else {
       setIsButtonEnabled(false);
     }
-    setUserInput(inputValue);
+    setSearchTerm(inputValue);
   };
 
   const searchHandler = () => {
-    fetchPhoto(userInput);
+    history.push(`/search/${searchTerm}`);
   };
 
   return (

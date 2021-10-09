@@ -12,7 +12,7 @@ const PhotoContextProvider = (props) => {
   const apiKey = "636e1481b4f3c446d26b8eb6ebfe7127";
 
   const fetchPhoto = async (tags) => {
-    console.log("*** fetching!");
+    console.log("*** fetching: ", userInput);
     try {
       setIsLoading(true);
       setUserInput(tags);

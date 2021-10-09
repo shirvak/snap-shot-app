@@ -1,29 +1,21 @@
-import { useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import classes from "./PhotoFilter.module.css";
 
 const PhotoFilter = () => {
-  const history = useHistory();
-  const filterButtonName = [
-    { routeName: "mountain", displayName: "Mountain" },
-    { routeName: "food", displayName: "Foods" },
-    { routeName: "beach", displayName: "Beaches" },
-    { routeName: "bird", displayName: "Birds" },
-  ];
-  const handleFilterClick = (filter) => {
-    history.push(`/${filter.routeName}`);
-  };
   return (
     <div className={classes.filterButtonsWrapper}>
-      {filterButtonName.map((filter, key) => (
-        <button
-          className={classes.filterButton}
-          type="submit"
-          key={key}
-          onClick={() => handleFilterClick(filter)}
-        >
-          {filter.displayName}
-        </button>
-      ))}
+      <NavLink className={classes.filterButton} to="/mountain">
+        Mountain
+      </NavLink>
+      <NavLink className={classes.filterButton} to="/food">
+        Foods
+      </NavLink>
+      <NavLink className={classes.filterButton} to="/beach">
+        Beaches
+      </NavLink>
+      <NavLink className={classes.filterButton} to="/bird">
+        Birds
+      </NavLink>
     </div>
   );
 };

@@ -23,7 +23,12 @@ function App() {
           <Route path="/beach" render={() => <PhotoList userInput="beach" />} />
           <Route path="/bird" render={() => <PhotoList userInput="bird" />} />
           <Route path="/food" render={() => <PhotoList userInput="food" />} />
-          <Route path="/search/:searchInput" render={() => <PhotoSearch />} />
+          <Route
+            path="/search/:searchInput"
+            render={(props) => (
+              <PhotoList userInput={props.match.params.searchInput} />
+            )}
+          />
         </Switch>
       </HashRouter>
     </PhotoContextProvider>
