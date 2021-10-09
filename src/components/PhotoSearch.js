@@ -28,7 +28,7 @@ const PhotoSearch = ({ onSearch }) => {
       <input
         className={classes.input}
         type="text"
-        placeholder="What are we searching for?"
+        placeholder="Hey Erez! What are we searching for today?"
         onChange={onInputChange}
       />
       <button type="submit" disabled={!isButtonEnabled} onClick={searchHandler}>

@@ -19,10 +19,10 @@ const PhotoList = ({ userInput }) => {
       ) : (
         <div className={classes.photoGallery}>
           {photoList?.map((item, key) => (
-            <div className={classes.photoItem}>
+            <div className={classes.photoItem} key={key}>
               <img
+                alt="photoItem"
                 src={`https://farm66.staticflickr.com/${item.server}/${item.id}_${item.secret}_m.jpg`}
-                key={key}
               />
             </div>
           ))}
