@@ -4,6 +4,7 @@ import PhotoList from "./components/PhotoList";
 import PhotoFilter from "./components/PhotoFilter";
 import PhotoContextProvider from "./context/PhotoContext";
 import classes from "./App.module.css";
+import VimLogo from "./UI/VimLogo";
 
 function App() {
   const searchParams = [
@@ -24,6 +25,7 @@ function App() {
   return (
     <PhotoContextProvider>
       <div className={classes.container}>
+        <VimLogo />
         <h1 className={classes.header}>SnapShot</h1>
         <PhotoSearch />
         <PhotoFilter searchParams={searchParams} />
