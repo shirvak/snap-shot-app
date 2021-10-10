@@ -20,7 +20,7 @@ const PhotoSearch = () => {
   };
 
   const searchHandler = () => {
-    history.push(`/search/${searchTerm}`);
+    history.push(`/${searchTerm}`);
   };
 
   return (

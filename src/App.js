@@ -1,4 +1,4 @@
-import { Route, Switch, Redirect, HashRouter } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import PhotoSearch from "./components/PhotoSearch";
 import PhotoList from "./components/PhotoList";
 import PhotoFilter from "./components/PhotoFilter";
@@ -6,24 +6,33 @@ import PhotoContextProvider from "./context/PhotoContext";
 import classes from "./App.module.css";
 
 function App() {
+  const searchParams = [
+    { routeName: "/mountain", displayName: "Mountain" },
+    { routeName: "/food", displayName: "Foods" },
+    { routeName: "/beach", displayName: "Beaches" },
+    { routeName: "/bird", displayName: "Birds" },
+  ];
+  const photos = searchParams.map((param, key) => (
+    <Route
+      key={key}
+      path={param.routeName}
+      render={() => (
+        <PhotoList userInput={param.displayName} path={param.routeName} />
+      )}
+    />
+  ));
   return (
     <PhotoContextProvider>
       <div className={classes.container}>
         <h1 className={classes.header}>SnapShot</h1>
         <PhotoSearch />
-        <PhotoFilter />
+        <PhotoFilter searchParams={searchParams} />
       </div>
       <Switch>
         <Route exact path="/" render={() => <Redirect to="/mountain" />} />
+        {photos}
         <Route
-          path="/mountain"
-          render={() => <PhotoList userInput="mountain" />}
-        />
-        <Route path="/beach" render={() => <PhotoList userInput="beach" />} />
-        <Route path="/bird" render={() => <PhotoList userInput="bird" />} />
-        <Route path="/food" render={() => <PhotoList userInput="food" />} />
-        <Route
-          path="/search/:searchInput"
+          path="/:searchInput"
           render={(props) => (
             <PhotoList userInput={props.match.params.searchInput} />
           )}
