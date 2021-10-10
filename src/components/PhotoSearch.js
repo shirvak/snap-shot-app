@@ -3,7 +3,7 @@ import classes from "./PhotoSearch.module.css";
 import SearchIcon from "../UI/SearchIcon";
 import { useHistory } from "react-router-dom";
 
-const PhotoSearch = ({ onSearch }) => {
+const PhotoSearch = () => {
   const history = useHistory();
   const [searchTerm, setSearchTerm] = useState("");
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
